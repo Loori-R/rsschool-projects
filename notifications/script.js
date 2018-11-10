@@ -63,34 +63,51 @@ continer_dots.onclick = (e)=> {
   
   let active = '';//active dot
   
+const next_func = () =>{
+    dots.forEach((elem,indx)=>{
+        if(indx === 0){return}
+        if(elem.style.backgroundColor !== ''){
+           return active = indx
+        } 
+     });    
+     dots_clear() 
+     if(active === dots.length-1){ 
+        active=0}
+     text.innerHTML = message[active]
+     dots[active+1].style.backgroundColor = '#333'
+}
+const prev_func = () =>{
+    dots.forEach((elem,indx)=>{
+        if(indx === 0){return}
+        if(elem.style.backgroundColor !== ''){
+           return active = indx
+        } 
+     });    
+     dots_clear() 
+     if(active === 1){ 
+        active = dots.length }
+     text.innerHTML = message[active-2]
+     dots[active-1].style.backgroundColor = '#333'
+}
+
   //arrow next
   next.onclick = () =>{   
-  dots.forEach((elem,indx)=>{
-    if(indx === 0){return}
-    if(elem.style.backgroundColor !== ''){
-       return active = indx
-    } 
- });    
- dots_clear() 
- if(active === dots.length-1){ 
-    active=0}
- text.innerHTML = message[active]
- dots[active+1].style.backgroundColor = '#333'
+ next_func()
  }
 
  //arrow prev
  prev.onclick = () =>{  
-    console.log(active)
-    dots.forEach((elem,indx)=>{
-      if(indx === 0){return}
-      if(elem.style.backgroundColor !== ''){
-         return active = indx
-      } 
-   });    
-   dots_clear() 
-   console.log(active)
-   if(active === 1){ 
-      active = dots.length }
-   text.innerHTML = message[active-2]
-   dots[active-1].style.backgroundColor = '#333'
+    prev_func()
    }
+
+   document.onkeydown = (e)=>{
+    if (e.keyCode == 39) {
+        next_func()
+    }   
+    if (e.keyCode == 37) {
+        prev_func()
+    }
+    if (e.keyCode == 27) {
+        notice.style.opacity = '0'
+    }  
+}
