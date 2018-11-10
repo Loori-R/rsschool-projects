@@ -38,6 +38,14 @@ box-shadow: inset 0px 0px 4px #333;
     align-items: center;
 }
 
+.arrow-containter{
+    width: 25px;
+    height: 25px;
+    display: grid;
+    align-items: center;
+    cursor: pointer;
+}
+
 .arrow{
     width: 15px;
     height: 15px;
@@ -47,11 +55,13 @@ box-shadow: inset 0px 0px 4px #333;
 }
 
 .arrow-prev{
+    justify-self: end;
     -webkit-clip-path: polygon(50% 0, 50% 11%, 10% 50%, 50% 89%, 50% 100%, 0 50%);
    clip-path: polygon(50% 0, 50% 11%, 10% 50%, 50% 89%, 50% 100%, 0 50%);
 }
 
 .arrow-next{
+    justify-self: start;
     -webkit-clip-path: polygon(50% 0, 50% 11%, 89% 50%, 50% 89%, 50% 100%, 100% 50%);
     clip-path: polygon(50% 0, 50% 11%, 89% 50%, 50% 89%, 50% 100%, 100% 50%);
  }
