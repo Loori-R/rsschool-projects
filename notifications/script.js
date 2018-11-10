@@ -1,3 +1,4 @@
+/* maximum 13 lines (associated with aesthetics) */
 const message = [
     'Most children are taught that the human body has five senses: sight, hearing, touch, taste, and smell. But many neurologists identify nine or more senses, and some list as many as 21.',
     
@@ -17,13 +18,16 @@ const notice = document.querySelector('aside.notifications')
 const close = document.querySelector('hr.close')
 const text = document.querySelector('div.useful-text')
 const continer_dots = document.querySelector('div.continer-dots')
+const next = document.getElementById('next')
+const prev = document.getElementById('prev')
 
-text.innerHTML = message[0]
+text.innerHTML = message[0]//inner first message
 
-setTimeout(()=>{notice.style.opacity = '1'},5000)
+setTimeout(()=>{notice.style.opacity = '1'},0000)//исправить на 5с
 
-close.onclick = ()=>{notice.style.opacity = '0'}
+close.onclick = ()=>{notice.style.opacity = '0'}//close notice
 
+//add dots
 const create_dots = (arr) =>{
 let length = arr.length
 if(length>13){length = 13}
@@ -31,21 +35,62 @@ for(let i = 0;i<length;i++){
 const dot = document.createElement('LI');
 dot.className = "dots"
 dot.id = i
-if(i === 0){dot.style.backgroundColor='#333'}
+if(i === 0){dot.style.backgroundColor='#333'}//add background style first dot
 continer_dots.appendChild(dot)
 }
 }
+create_dots(message)
 
-continer_dots.onclick = (e)=>{ 
+const dots = continer_dots.childNodes
+
+//clear dots style background
+const dots_clear = () =>{
+    dots.forEach((elem,indx)=>{
+        if(indx === 0){return}
+       elem.style.backgroundColor=''
+     });  
+}
+//change text when clicking on points
+continer_dots.onclick = (e)=> { 
     const target = e.target;
-    if (target.tagName != 'LI') return;   
-    continer_dots.childNodes.forEach((elem,indx)=>{
-     if(indx === 0){return}
-    elem.style.backgroundColor='#fff'
-  });          
-  target.style.backgroundColor = '#333'
-  console.log(target.id)
-  text.innerHTML = message[target.id]
-  };
+    if (target.tagName != 'LI') return;        
+   
+    dots_clear()      
 
-  create_dots(message)
+    target.style.backgroundColor = '#333'
+    text.innerHTML = message[target.id]
+  };
+  
+  let active = '';//active dot
+  
+  //arrow next
+  next.onclick = () =>{   
+  dots.forEach((elem,indx)=>{
+    if(indx === 0){return}
+    if(elem.style.backgroundColor !== ''){
+       return active = indx
+    } 
+ });    
+ dots_clear() 
+ if(active === dots.length-1){ 
+    active=0}
+ text.innerHTML = message[active]
+ dots[active+1].style.backgroundColor = '#333'
+ }
+
+ //arrow prev
+ prev.onclick = () =>{  
+    console.log(active)
+    dots.forEach((elem,indx)=>{
+      if(indx === 0){return}
+      if(elem.style.backgroundColor !== ''){
+         return active = indx
+      } 
+   });    
+   dots_clear() 
+   console.log(active)
+   if(active === 1){ 
+      active = dots.length }
+   text.innerHTML = message[active-2]
+   dots[active-1].style.backgroundColor = '#333'
+   }
