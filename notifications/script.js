@@ -20,13 +20,24 @@ const text = document.querySelector('div.useful-text')
 const continer_dots = document.querySelector('div.continer-dots')
 const next = document.getElementById('next')
 const prev = document.getElementById('prev')
+const disable = document.getElementById('disable')
+const checkboxStatus = localStorage.getItem('checkboxStatus')
+
+if (checkboxStatus === 'disable'){}
+	else {
+		setTimeout(()=>{notice.style.opacity = '1'},0000)//исправить на 5с
+	}
+
+disable.onchange = () =>{
+    if (disable.checked) { 
+        localStorage.setItem('checkboxStatus', 'disable');}
+	else {
+		localStorage.setItem('checkboxStatus', 'permit');
+	}  
+}
 
 text.innerHTML = message[0]//inner first message
-
-setTimeout(()=>{notice.style.opacity = '1'},0000)//исправить на 5с
-
 close.onclick = ()=>{notice.style.opacity = '0'}//close notice
-
 //add dots
 const create_dots = (arr) =>{
 let length = arr.length
@@ -50,6 +61,16 @@ const dots_clear = () =>{
        elem.style.backgroundColor=''
      });  
 }
+
+//a little smoothness
+const anim_text = (indx) =>{
+    text.style.color = 'rgba(0,0,0,0)'  
+    setTimeout(()=>{
+        text.innerHTML = message[indx]
+        text.style.color = '#333'
+    },300)
+}
+
 //change text when clicking on points
 continer_dots.onclick = (e)=> { 
     const target = e.target;
@@ -57,9 +78,9 @@ continer_dots.onclick = (e)=> {
    
     dots_clear()      
 
-    target.style.backgroundColor = '#333'
-    text.innerHTML = message[target.id]
-  };
+    target.style.backgroundColor = '#333'   
+    anim_text(target.id)   
+};
   
   let active = '';//active dot
   
@@ -73,7 +94,7 @@ const next_func = () =>{
      dots_clear() 
      if(active === dots.length-1){ 
         active=0}
-     text.innerHTML = message[active]
+        anim_text(active) 
      dots[active+1].style.backgroundColor = '#333'
 }
 const prev_func = () =>{
@@ -86,7 +107,7 @@ const prev_func = () =>{
      dots_clear() 
      if(active === 1){ 
         active = dots.length }
-     text.innerHTML = message[active-2]
+        anim_text(active-2)
      dots[active-1].style.backgroundColor = '#333'
 }
 
