@@ -1,6 +1,21 @@
-    const form = document.createElement('form')
-    form.innerHTML = `<form action="#">
-    <input type="text" id="search" placeholder="Type something..." autocomplete="off" class="input-text-search" autofocus>
-    <input id="btn-sumbit" type="submit" value="Search" class="input-btn-search">
-        </form>`    
-    document.body.appendChild(form)
+const from = document.createElement('form')
+export const query = document.createElement('input')
+export const btn = document.createElement('input')
+
+from.setAttribute('action', '#')
+
+query.id="search"
+query.setAttribute('placeholder', 'Type something...')
+query.setAttribute('value', 'little big')
+query.setAttribute('autocomplete', 'off')
+query.className = "input-text-search"
+
+btn.id="btn-sumbit"
+btn.setAttribute('type', 'submit')
+btn.setAttribute('value', 'Search')
+btn.className = "input-btn-search"
+btn.disabled = 'true'
+
+from.appendChild(query)
+from.appendChild(btn)
+document.body.appendChild(from)
