@@ -29,11 +29,11 @@ import {
 let count_click_token = 1
 
 export function getPrevPage(e) {
+    next_page.disabled = true
+    prev_page.disabled = true
     e.preventDefault();
-    if (count_click_token === 1) {
-        prev_page.disabled = true
-    }
     count_click_token--
+    console.log(count_click_token)
     next_page.disabled = false
     document.body.appendChild(loadng)
     btn.disabled = true
@@ -45,13 +45,16 @@ export function getPrevPage(e) {
         createDots()
         createVideoCard(1, +count_video_in_page + 1)
         btn.disabled = false
+        if (count_click_token !== 1) {
+            prev_page.disabled = false
+            next_page.disabled = false
+        }
     }, 1000)
 }
 export function getNextPage(e) {
+    next_page.disabled = true
+    prev_page.disabled = true
     e.preventDefault();
-    if (count_click_token === res_data[1].totalPageToken) {
-        next_page.disabled = true
-    }
     count_click_token++
     prev_page.disabled = false
     document.body.appendChild(loadng)
@@ -66,5 +69,9 @@ export function getNextPage(e) {
         createDots()
         createVideoCard(1, +count_video_in_page + 1)
         btn.disabled = false
+        if (count_click_token !== res_data[1].totalPageToken) {
+            next_page.disabled = false
+            prev_page.disabled = false
+        }
     }, 1000)
 }
