@@ -1,5 +1,7 @@
-import { query } from './search-form.js';
-export function search_res(res_data, pageToken) {
+import {
+    query
+} from './search-form.js';
+export function searchRes(res_data, pageToken) {
     const api_key = 'AIzaSyDVdE4LwpceNaEd3UTHg4ESHrBjnWwne_E'
     const request = gapi.client.youtube.search.list({
         q: query.value,
@@ -16,8 +18,9 @@ export function search_res(res_data, pageToken) {
             xhr.open('GET', `https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${item.id.videoId}&key=${api_key}`, true);
             xhr.send();
             xhr.onreadystatechange = () => {
-                if (xhr.readyState != 4) { return }
-                else {
+                if (xhr.readyState != 4) {
+                    return
+                } else {
                     res_data[i + 1] = {
                         link: `https://www.youtube.com/watch?v=${item.id.videoId}`,
                         title: item.snippet.title,
@@ -26,6 +29,7 @@ export function search_res(res_data, pageToken) {
                         author: item.snippet.channelTitle,
                         view: JSON.parse(xhr.response).items[0].statistics.viewCount,
                         date: item.snippet.publishedAt.match(/\d+-\d+-\d+/).join(),
+                        totalPageToken: Math.ceil(+results.pageInfo.totalResults / +results.pageInfo.resultsPerPage),
                         nextPageToken: results.nextPageToken,
                         prevPageToken: results.prevPageToken
                     }
