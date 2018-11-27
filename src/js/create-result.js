@@ -19,6 +19,31 @@ const prev_page = document.createElement('button')
 prev_page.textContent = '<'
 let count_video_in_page = 4;
 
+function create_dots() {
+    const width_window_medium = document.documentElement.clientWidth < 1320 && document.documentElement.clientWidth > 1024
+    const width_window_little = document.documentElement.clientWidth < 1024
+    if (width_window_medium) { count_video_in_page = 3 }
+    if (width_window_little) { count_video_in_page = 1 }
+
+    let dots = Math.ceil(Object.keys(res_data).length / count_video_in_page)
+    let i = 0;
+    let c = 1
+    while (i < dots) {
+        const dot_elem = document.createElement('div')
+        dot_elem.className = "dot-elem"
+        dot_elem.style.background = '#FF2B2B'
+        if (i === 0) { dot_elem.style.background = '#fff' }
+        dot_elem.innerText = i + 1
+        dot_elem.id = c
+        dots_block.appendChild(dot_elem)
+        i++
+        c += count_video_in_page
+    }
+    create_video_card(1, +count_video_in_page + 1)
+    btn.disabled = false
+    document.body.removeChild(loadng)
+}
+
 btn.onclick = (e) => {
     document.body.appendChild(loadng)
     btn.disabled = 'true'
@@ -26,30 +51,7 @@ btn.onclick = (e) => {
     dots_block.innerHTML = ""
     e.preventDefault();
     search_res(res_data)
-    setTimeout(() => {
-        const width_window_medium = document.documentElement.clientWidth < 1320 && document.documentElement.clientWidth > 1024
-        const width_window_little = document.documentElement.clientWidth < 1024
-        if (width_window_medium) { count_video_in_page = 3 }
-        if (width_window_little) { count_video_in_page = 1 }
-
-        let dots = Math.ceil(Object.keys(res_data).length / count_video_in_page)
-        let i = 0;
-        let c = 1
-        while (i < dots) {
-            const dot_elem = document.createElement('div')
-            dot_elem.className = "dot-elem"
-            dot_elem.style.background = '#FF2B2B'
-            if (i === 0) { dot_elem.style.background = '#fff' }
-            dot_elem.innerText = i + 1
-            dot_elem.id = c
-            dots_block.appendChild(dot_elem)
-            i++
-            c += count_video_in_page
-        }
-        create_video_card(1, +count_video_in_page + 1)
-        btn.disabled = false
-        document.body.removeChild(loadng)
-    }, 1000)
+    setTimeout(() => { create_dots() }, 1000)
 }
 
 dots_block.onclick = (event) => {
@@ -62,64 +64,28 @@ dots_block.onclick = (event) => {
     create_video_card(target.id, (+count_video_in_page) + (+target.id))
 };
 next_page.onclick = (e) => {
+    document.body.appendChild(loadng)
     btn.disabled = 'true'
     container.innerHTML = ""
     dots_block.innerHTML = ""
     e.preventDefault();
     search_res(res_data, res_data[1].nextPageToken)
     setTimeout(() => {
-        const width_window_medium = document.documentElement.clientWidth < 1320 && document.documentElement.clientWidth > 1024
-        const width_window_little = document.documentElement.clientWidth < 1024
-        if (width_window_medium) { count_video_in_page = 3 }
-        if (width_window_little) { count_video_in_page = 1 }
-
-        let dots = Math.ceil(Object.keys(res_data).length / count_video_in_page)
-        let i = 0;
-        let c = 1
-        dots_block.appendChild(prev_page)
-        while (i < dots) {
-            const dot_elem = document.createElement('div')
-            dot_elem.className = "dot-elem"
-            dot_elem.style.background = '#FF2B2B'
-            if (i === 0) { dot_elem.style.background = '#fff' }
-            dot_elem.innerText = i + 1
-            dot_elem.id = c
-            dots_block.appendChild(dot_elem)
-            i++
-            c += count_video_in_page
-        }
+        create_dots()
         create_video_card(1, +count_video_in_page + 1)
         btn.disabled = false
     }, 1000)
 }
 
 prev_page.onclick = (e) => {
+    document.body.appendChild(loadng)
     btn.disabled = 'true'
     container.innerHTML = ""
     dots_block.innerHTML = ""
     e.preventDefault();
     search_res(res_data, res_data[1].prevPageToken)
     setTimeout(() => {
-        const width_window_medium = document.documentElement.clientWidth < 1320 && document.documentElement.clientWidth > 1024
-        const width_window_little = document.documentElement.clientWidth < 1024
-        if (width_window_medium) { count_video_in_page = 3 }
-        if (width_window_little) { count_video_in_page = 1 }
-
-        let dots = Math.ceil(Object.keys(res_data).length / count_video_in_page)
-        let i = 0;
-        let c = 1
-        dots_block.appendChild(prev_page)
-        while (i < dots) {
-            const dot_elem = document.createElement('div')
-            dot_elem.className = "dot-elem"
-            dot_elem.style.background = '#FF2B2B'
-            if (i === 0) { dot_elem.style.background = '#fff' }
-            dot_elem.innerText = i + 1
-            dot_elem.id = c
-            dots_block.appendChild(dot_elem)
-            i++
-            c += count_video_in_page
-        }
+        create_dots()
         create_video_card(1, +count_video_in_page + 1)
         btn.disabled = false
     }, 1000)
@@ -175,11 +141,11 @@ const create_video_card = (start, end) => {
 }
 let down = 0;
 let up = 0;
-document.onmousedown = (e) => {
+container.onmousedown = (e) => {
     if (e.which != 1) { return }
     down = e.clientX
 }
-document.onmouseup = (e) => {
+container.onmouseup = (e) => {
     let target_dot = 0;
     let next_dot_i = 0;
     if (e.which != 1) { return }
@@ -205,9 +171,9 @@ document.onmouseup = (e) => {
         setTimeout(() => { container.style.left = '0vw' }, 350)
     }
 }
-document.addEventListener('touchmove', move_touch);
-document.addEventListener('touchend', end_touch);
-document.addEventListener('touchstart', start_touch);
+container.addEventListener('touchmove', move_touch);
+container.addEventListener('touchend', end_touch);
+container.addEventListener('touchstart', start_touch);
 let arr_toches = []
 function start_touch(ev) {
     arr_toches = []
