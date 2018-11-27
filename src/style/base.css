@@ -1,6 +1,11 @@
 body {
     width: 98vw;
-    overflow: hidden;
+    min-height: 920px;
+    display: grid;
+    grid-template-rows: 43px 670px 107px 100px;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
     background: #fff;
     font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
 }
@@ -49,6 +54,7 @@ div.video-card {
     grid-template-rows: 180px 100px 30px 30px 30px 230px;
     align-items: center;
     text-align: center;
+    text-overflow: ellipsis;
     color: #fff;
     background: #FF2B2B
 }
@@ -79,7 +85,7 @@ div.video-card h1 a {
 .dots-block {
     display: flex;
     justify-content: center;
-    margin: 50px 0;
+    margin: 50px 0 20px;
 }
 
 .dot-elem {
@@ -96,73 +102,92 @@ div.video-card h1 a {
     color: #FF2B2B;
 }
 
-button {
-    width: 35px;
+.block-button {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 450px;
+    margin: auto;
+}
+
+.button-prev {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.block-button span {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    font-weight: bold;
+    padding: 5px;
+    color: #FF2B2B;
+    text-align: center;
+}
+
+.button-next {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.block-button button {
+    width: 135px;
     height: 35px;
+    margin: 10px;
     background: rgb(255, 43, 43);
     color: #fff;
     border: 1px solid #FF2B2B;
-    border-radius: 50%;
+    border-radius: 10px;
     font-weight: bold;
 }
 
-/*animation loading*/
-
-.load {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /*change these sizes to fit into your project*/
-    width: 100px;
-    height: 100px;
+.block-button button:active,
+.block-button button:focus,
+button:disabled {
+    box-shadow: 0px 0px 25px #000 inset;
+    border: none;
 }
 
-.load hr {
-    border: 0;
-    margin: 0;
-    width: 40%;
-    height: 40%;
-    position: absolute;
-    border-radius: 50%;
-    animation: spin 2s ease infinite
-}
-
-.load :first-child {
-    background: #ffffff;
-    border: 1px solid #F63D3A;
-    animation-delay: -1.5s
-}
-
-.load :nth-child(2) {
-    background: #F63D3A;
-    border: 1px solid #F63D3A;
-    animation-delay: -1s
-}
-
-.load :nth-child(3) {
-    background: #ffffff;
-    border: 1px solid #F63D3A;
-    animation-delay: -0.5s
-}
-
-.load :last-child {
-    background: #F63D3A;
-    border: 1px solid #F63D3A;
-}
-
-@keyframes spin {
-    0%,
-    100% {
-        transform: translate(0)
+@media screen and (max-width: 1024px) {
+    body {
+        display: block;
     }
-    25% {
-        transform: translate(160%)
+
+    form {
+        font-size: 1.5em;
     }
-    50% {
-        transform: translate(160%, 160%)
+
+    .input-btn-search {
+        padding: 0 5vw;
     }
-    75% {
-        transform: translate(0, 160%)
+
+    div.video-container {
+        margin-top: none;
+        height: 100%;
+    }
+
+    div.video-card {
+        width: auto;
+        height: 100%;
+        grid-template-rows: none;
+        font-size: 2.3rem;
+    }
+
+    div.video-card img {
+        width: 100%;
+        object-fit: cover;
+        height: 30vh;
+    }
+
+    .block-button {
+        font-size: 2.3em;
+        width: 90vw;
+    }
+
+    .block-button button {
+        width: 23vw;
+        height: 10vw;
+        font-size: 1.4em;
     }
 }
