@@ -4,13 +4,13 @@ export const btn = document.createElement('input')
 
 from.setAttribute('action', '#')
 
-query.id="search"
+query.id = "search"
 query.setAttribute('placeholder', 'Type something...')
-query.setAttribute('value', 'little big')
+query.setAttribute('value', 'javascript')
 query.setAttribute('autocomplete', 'off')
 query.className = "input-text-search"
 
-btn.id="btn-sumbit"
+btn.id = "btn-sumbit"
 btn.setAttribute('type', 'submit')
 btn.setAttribute('value', 'Search')
 btn.className = "input-btn-search"
