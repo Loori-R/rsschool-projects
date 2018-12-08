@@ -1,0 +1,19 @@
+{
+  "name": "code-jam-scoreboard",
+  "version": "1.0.0",
+  "description": "CodeJam \"CSS Quick Draw Scoreboard\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rolling-scopes-school/loori-r-2018Q3/tree/code-jam-scoreboard/code-jam-scoreboard"
+  },
+  "author": "loori-r",
+  "license": "ISC",
+  "dependencies": {
+    "chart.js": "^2.7.3",
+    "lodash": "^4.17.11"
+  }
+}
