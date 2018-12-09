@@ -1,0 +1,9 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: MS Sans Serif4, Geneva, sans-serif;
+}
+
+td {
+    border: 1px solid #B1B1B1;
+}
