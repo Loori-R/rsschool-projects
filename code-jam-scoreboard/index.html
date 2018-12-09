@@ -3,11 +3,31 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <link rel="stylesheet" href="src/style.css">
+    <title>Code Jam "ScoreBoard"</title>
 </head>
+<form id="sessions-form">
+    <input type="radio" name="group1" value="rss" checked> RS School<br>
+    <input type="radio" name="group1" value="rssdemo"> RS School Demo<br>
+</form>
+<table>
+    <thead>
+        <tr>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+<div>
+    <canvas id="chart" width="200" height="50"></canvas>
+</div>
 
 <body>
-
+    <script src='node_modules/lodash/lodash.min.js'></script>
+    <script src='node_modules/chart.js/dist/Chart.min.js'></script>
+    <script src='src/users.js'></script>
+    <script src='src/sessions.js'></script>
+    <script src='src/session2.js'></script>
+    <script src='src/index.js'></script>
 </body>
 
 </html>
