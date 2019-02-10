@@ -1,0 +1,136 @@
+.battle-header{
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background-color: rgba(255,255,255,0.5);
+  box-shadow: 0px 0px 15px #fff09e;
+}
+
+.mute-sound-img:hover,
+.mute-sound-img.muted{
+ border-radius: 50%;
+  object-fit: contain;
+  transition: all 300ms ease-in;
+  background-color: #000;
+  box-shadow: 0px 0px 25px #000;
+}
+
+.battle-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 50px;
+  grid-row: 2;
+}
+
+.enemy-container{
+  transition: all 1500ms linear;
+}
+
+#main-hero {
+  grid-column: 1;
+  width: 300px;
+  height: 300px;
+  background-image: url('../../uploads/character/hero2.png');
+  background-position: -2700px 0;
+  background-repeat: no-repeat;
+  background-size: 3000px 1500px;
+  transition: none;
+}
+
+#sprite {
+  grid-column: 4;
+  width: 300px;
+  height: 300px;
+  background-repeat: no-repeat;
+  background-size: 900px 1800px;
+  transform: scale(-1, 1);
+  transition: all 250ms linear;
+}
+
+#effects {
+  position: relative;
+  left: 0;
+  grid-column: 2/3;
+  width: 300px;
+  height: 300px;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: 3000px 1200px;
+  transition: none;
+  z-index: 1;
+}
+
+.hp {
+  width: 300px;
+  height: 30px;
+  margin-bottom: 20px;
+  box-shadow: inset 300px 0 0 #D03E42;
+  background-color: #8B070A;
+  border:3px solid #055552;
+}
+
+#hp-enemy{
+  border:3px solid #8C4308;
+  z-index: -2;
+}
+
+.name-character {
+  font-size: 1.7em;
+  color: #fff09e;
+  text-shadow: 0px 0px 20px #fff09e;
+  font-weight: bold;
+  text-align: center;
+}
+
+.container-modal-dialog>.swal-footer{
+  width: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 400px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.spell-modal-dialog {
+  width: 100px;
+height: 100px;
+  background-image: url('../../uploads/images/icon_spells.png');
+  background-size: 400px 100px;
+  background-repeat: no-repeat;
+}
+
+.spell-modal-dialog:hover {
+  width: 102px;
+  height: 102px;
+  box-shadow: 0 0 20px #555;
+  transition: all 300ms ease;
+}
+
+.spell-modal-dialog.clank {
+  background-position: 0 0;
+}
+
+.spell-modal-dialog.foom {
+  background-position: -200px 0;
+}
+
+.spell-modal-dialog.firespell {
+  background-position: -100px 0;
+}
+
+.spell-modal-dialog.fireblue {
+  background-position: -300px 0;
+}
+.swal-modal>div,
+.swal-content__input, 
+.swal-content__textarea{
+  font-size:40px;
+}
+.swal-footer{text-align: center;}
+.swal-button {font-size:30px;}
+.swal-button{border: none}
+.swal-button--cancel{background-color: #FD7789;color:#fff;}
+.swal-button--confirm{background-color: #95FA75;color:#555}
+.swal-button--cancel:not([disabled]):hover{background-color: #FC5169;}
+.swal-button--confirm:not([disabled]):hover{background-color: #77F54F;}
