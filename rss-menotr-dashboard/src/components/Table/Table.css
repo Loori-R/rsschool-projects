@@ -1,0 +1,57 @@
+.table-mark-body {
+  border-spacing: 0;
+  border-collapse: collapse;
+  display: block;
+  overflow-x:auto;
+  margin:auto;
+}
+
+td {
+  border: 2px solid #2A2A2A;
+  padding: 15px 0.5vw;
+}
+
+
+td.checked,
+td.checking,
+td.in-progress,
+td.to-do{
+  width: auto;
+}
+
+td.checked {
+  box-shadow: inset 5px 0 2px #6ADA58;
+}
+
+td.checking {
+  box-shadow: inset 5px 0 2px #FA6570;
+}
+
+td.in-progress {
+  box-shadow: inset 5px 0 2px #FFE567;
+}
+
+td.to-do {
+  box-shadow: inset 5px 0 2px #7159BC;
+}
+
+
+td.status-check-nohting{
+  background-color: #EF4652;
+}
+
+td.status-task-to-do{
+  background-color: #C3C0C1;
+}
+
+td.status-task-in-progress{
+  background-color: #FFF18C;
+}
+
+td.status-task-checking{
+  background-color: #FC8A92;
+}
+
+td.status-check-checked{
+  background-color: #8EEA80;
+}
