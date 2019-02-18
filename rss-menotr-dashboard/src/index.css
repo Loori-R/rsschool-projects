@@ -1,0 +1,15 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Verdana', 'Geneva', sans-serif;
+}
+
+a:visited,a:link,a:hover,a:active{
+  text-decoration: none;
+  color:inherit;  
+}
+
+a:hover{
+  cursor: pointer;
+  border-bottom: 2px solid black;
+}
