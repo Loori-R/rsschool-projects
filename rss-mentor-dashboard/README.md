@@ -1,4 +1,6 @@
-How to use:
+## [Demo](https://loori-r.github.io/rss-menotor-dashboard/)
+
+## How to use:
 
 1. `git clone https://github.com/rolling-scopes-school/loori-r-2018Q3.git`
 2. `cd loori-r-2018Q3/rss-mentor-dashboard`
