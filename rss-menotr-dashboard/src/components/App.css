@@ -1,0 +1,10 @@
+.main-container{
+  display: grid;
+grid-gap: 50px;
+}
+
+h3{
+  color:#FA6570;
+  text-transform: uppercase;
+  text-align: center;
+}
