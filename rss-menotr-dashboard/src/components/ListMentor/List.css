@@ -1,0 +1,34 @@
+.select-mentor-body{
+  width: 100%;
+  display: flex;
+justify-content: space-around;
+align-content: center;
+align-items: center;
+flex-wrap: wrap;
+}
+
+.list-mentor-body { 
+  max-width: 800px;
+  min-width: 300px;
+  color:#2A2A2A;
+  text-align: center;
+}
+
+.select-mentor-btn {
+  grid-column: 1;
+  grid-row: 2;
+  min-height: 45px;
+  border: 3px solid #2A2A2A;
+  background: none;
+  font-weight: bold;
+  font-size: 1em;
+  color:#2A2A2A;
+}
+
+.selected-mentor-name {
+  font-weight: bold;
+  text-align: center;
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+  border-bottom: 3px solid #2684ff;
+}
