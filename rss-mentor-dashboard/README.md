@@ -1,4 +1,4 @@
-## [Demo](https://loori-r.github.io/rss-menotor-dashboard/)
+## [Demo](https://loori-r.github.io/rss-mentor-dashboard/)
 
 ## How to use:
 
