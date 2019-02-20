@@ -12,15 +12,6 @@ class App extends Component {
     students: []
   };
 
-  firstStart = async () => {
-    const pairs = await (_.filter(info.pairs, { 'interviewer': this.state.active }))
-    const studentsList = await (_.map(pairs, (item) => { return item.student }))
-    this.setState({
-      select: true,
-      students: studentsList
-    })
-  }
-
   handlerChange = async (e) => {
     if (e !== undefined) {
       if (e.value === this.state.active) { return }
