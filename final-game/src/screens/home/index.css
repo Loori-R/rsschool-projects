@@ -1,0 +1,97 @@
+@font-face {
+  font-family: 'Pobeda Regular';
+  src: url('../../uploads/fonts/pobeda_regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  cursor: url('../../uploads/images/dwarven_gauntlet_extra_3.png') 0 0, auto;
+  padding: 0;
+  margin: 0;
+  font-family: 'Pobeda Regular', 'Trebuchet MS', 'Lucida Sans', Arial, sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+a,
+a:visited,
+a:link {
+  text-decoration: none;
+  color: #F7EEE3;
+}
+
+body {
+  overflow: hidden;
+  background: url('../../uploads/images/backround.png');
+  background-clip: border-box;
+  background-position: center top;
+  background-size: cover;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 100vh;
+  justify-content: center;
+  align-content: space-between;
+}
+
+.main-menu {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-content: center;
+  text-align: center;
+  font-size: 7rem;
+  color: #F7EEE3;
+  font-weight: bold;
+  left: 0;
+}
+
+.elem-main-menu.muted {
+  color: gray
+}
+
+.form-player-name>div:hover,
+.main-menu>div:hover {
+  text-shadow: 0px 0px 20px #fff09e;
+  transition: all 100ms linear;
+}
+
+.name-game {
+  font-size: 7rem;
+  text-align: center;
+  color: #F7EEE3;
+  text-shadow: 0px 0px 15px #fff09e;
+  padding-left: 8.4vw;
+  letter-spacing: 56px;
+  font-weight: 100;
+  top: 0;
+}
+
+.form-name {
+  width: 400px;
+  height: 120px;
+  font-size: 5em;
+  text-align: center;
+  border: none;
+  font-weight: bold;
+  margin: auto;
+  box-shadow: 0px 0px 15px #fff09e;
+  color: #B29C82;
+}
+
+.form-player-name {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  font-size: 7rem;
+  color: #F7EEE3;
+  font-weight: bold;
+  left: 0;
+}
